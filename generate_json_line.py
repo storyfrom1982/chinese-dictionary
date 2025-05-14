@@ -40,7 +40,7 @@ def json_objects_to_lines(input_json_file, output_file_prefix, max_lines_per_fil
         if line_count % max_lines_per_file == 0:
             if current_file is not None:
                 current_file.close()
-            output_file = f"{output_file_prefix}_{file_count}.txt"
+            output_file = f"{output_file_prefix}_{file_count}.json"
             current_file = open(output_file, 'w', encoding='utf-8')
             file_count += 1
             line_count = 0
