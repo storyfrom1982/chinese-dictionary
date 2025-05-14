@@ -52,8 +52,8 @@ def process_character(char_data: Dict, detail_data: Dict) -> Dict:
         "meaning": [
             {
                 "pinyin": 0,  # 拼音索引
-                "original": "解释1\n解释2",  # 同音不同义合并
-                "translation": ""
+                "chinese": "解释1\n解释2",  # 同音不同义合并
+                "english": ""
             }
         ]
     }
@@ -94,8 +94,8 @@ def process_character(char_data: Dict, detail_data: Dict) -> Dict:
             if explanations or True:  # 始终添加，即使解释为空
                 result["meaning"].append({
                     "pinyin": pinyin_index,
-                    "original": "\n".join(explanations),
-                    "translation": ""
+                    "chinese": "\n".join(explanations),
+                    "english": ""
                 })
     
     # 确保每个拼音至少有一个meaning条目
@@ -103,8 +103,8 @@ def process_character(char_data: Dict, detail_data: Dict) -> Dict:
         if not any(m["pinyin"] == i for m in result["meaning"]):
             result["meaning"].append({
                 "pinyin": i,
-                "original": "",
-                "translation": ""
+                "chinese": "",
+                "english": ""
             })
     
     return result
@@ -143,8 +143,8 @@ def process_word(word_data: Dict) -> Optional[Dict]:
         "pinyin": valid_pinyins,
         "meaning": [{
             "pinyin": 0,
-            "original": explanation if explanation else "",
-            "translation": ""
+            "chinese": explanation if explanation else "",
+            "english": ""
         }]
     }
 
@@ -212,14 +212,14 @@ def process_idiom(idiom_data: Dict) -> Optional[Dict]:
     if explanations:
         result["meaning"].append({
             "pinyin": 0,
-            "original": "\n".join(explanations),
-            "translation": ""
+            "chinese": "\n".join(explanations),
+            "english": ""
         })
     else:
         result["meaning"].append({
             "pinyin": 0,
-            "original": "",
-            "translation": ""
+            "chinese": "",
+            "english": ""
         })
     
     return result

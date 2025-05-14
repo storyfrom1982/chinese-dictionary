@@ -66,7 +66,7 @@ if __name__ == "__main__":
     input_file = "converted_dictionary.json"  # 替换为您的JSON文件路径
     output_prefix = "chinese-words"
     
-    json_objects_to_lines(input_file, output_prefix)
+    json_objects_to_lines(input_file, output_prefix, 100000)
     
     # 如果想改为每5000条一个文件：
     # json_objects_to_lines(input_file, output_prefix, 5000)
